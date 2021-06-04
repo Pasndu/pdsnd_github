@@ -186,7 +186,7 @@ def viw_data(city):
               'washington': 'washington.csv' }
     df = pd.read_csv(CITY_DATA[city])
 
-    view_data = input('\nWould you like to view 5 rows of individual trip data of ',city'? Enter yes or no\n')
+    view_data = input('\nWould you like to view 5 rows of individual trip data of ',city,' ? Enter yes or no. \n')
     start_loc = 0
     while view_data == 'yes':
         print(df.iloc[start_loc:(start_loc+5)])
