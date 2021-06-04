@@ -69,6 +69,9 @@ def get_filters(city,month,day):
 
 
 def load_data(city, month, day):
+    """
+    loard data from data files (.csv files) according to the output of get_filters
+    """
 
     CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
