@@ -17,4 +17,4 @@ new_york_city.csv<br />
 washington.csv<br />
 
 ### Credits
-https://github.com/udacity/pdsnd_github
+https://github.com/udacity/pdsnd_github - forked pdsn_github repository
