@@ -4,10 +4,10 @@ import numpy as np
 
 
 def get_filters(city,month,day):
-    
-    
+
+
     """
-    Asks user to sth, and day to analyze.
+    Asks user to input month, city and day to analyze.
 
     def get_filters()
     Returns:
@@ -19,9 +19,9 @@ def get_filters(city,month,day):
     city = city.lower()
     month = month.lower()
     day = day.lower()
-    
-    
-    
+
+
+
     city = city
     cities = ['chicago','new york city','washington']
     cit_in = 0
@@ -32,9 +32,9 @@ def get_filters(city,month,day):
         else:
             city = input("enter a valid city name to continue :")
             city = city.lower()
-           
+
     # TO DO: get user input for month (all, january, february, ... , june)
-        
+
     months = ['january','february','march','april','may','june','july','augest','september','octomber','november','desember','all']
     mo = 'no'
     while mo == 'no':
@@ -44,34 +44,34 @@ def get_filters(city,month,day):
             break
         else:
             month = input("enter a valid month to continue :")
-            month = month.lower()        
-  
-    
+            month = month.lower()
+
+
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-        
+
     days = ['monday','tuesday','wednesday','thursday','fryday','saturday','sunday','all']
-    
+
     c = 0
     while c == 0:
         if day in days:
             c = 1
             break
-            
+
         else:
             day = input("enter a valid day to continue :")
             day = day.lower()
-            
+
     print('-'*40)
     return city, month, day
 
-        
-    
-    
+
+
+
 
 def load_data(city, month, day):
-    
+
     CITY_DATA = { 'chicago': 'chicago.csv',
-              'new york city': 'new_york_city.csv',                
+              'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
     df = pd.read_csv(CITY_DATA[city])
     df['Start Time'] = pd.to_datetime(df['Start Time'])
@@ -81,14 +81,14 @@ def load_data(city, month, day):
     df['day'] = df['Start Time'].dt.weekday_name
     if day != 'all':
         df = df[df['day'] == day]
-    
-        
+
+
     return df
 
-   
+
 def time_stats(df):
-    
-                
+
+
     """Displays statistics on the most frequent times of travel."""
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
@@ -105,8 +105,8 @@ def time_stats(df):
     # TO DO: display the most common start hour
     df['start hour'] = df['Start Time'].dt.hour
     mcs = df['start hour'].mode()
-    print("the most common start hour is: ",mcs)  
-    
+    print("the most common start hour is: ",mcs)
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*100)
 
@@ -118,10 +118,10 @@ def station_stats(df):
     start_time = time.time()
 
     # TO DO: display most commonly used start station
-    
+
     mcss = df['Start Station'].mode()
     print("the most commonly used start station is :",mcss)
-          
+
 
 
     # TO DO: display most commonly used end station
@@ -142,7 +142,7 @@ def trip_duration_stats(df):
 
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
-    
+
 
     # TO DO: display total travel time
     total_travel_time = df['Trip Duration'].sum()
@@ -165,8 +165,8 @@ def user_stats(df,city):
     useer_types = df['User Type'].value_counts()
     print('total counts of user types: ',useer_types)
     # TO DO: Display counts of gender
-    if city != 'washington': 
-        useer_gender = df['Gender'].value_counts() 
+    if city != 'washington':
+        useer_gender = df['Gender'].value_counts()
         print('total counts of gender: ',useer_gender)
     # TO DO: Display earliest, most recent, and most common year of birth
         earliest = df['Birth Year'].max()
@@ -179,16 +179,16 @@ def user_stats(df,city):
 
 def viw_data(city):
     CITY_DATA = { 'chicago': 'chicago.csv',
-              'new york city': 'new_york_city.csv',                
+              'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
     df = pd.read_csv(CITY_DATA[city])
-    
+
     view_data = input('\nWould you like to view 5 rows of individual trip data? Enter yes or no\n')
     start_loc = 0
     while view_data == 'yes':
         print(df.iloc[start_loc:(start_loc+5)])
         start_loc += 5
-        view_data = input("Do you wish to continue?: ").lower()   
+        view_data = input("Do you wish to continue?: ").lower()
 def main():
     while True:
         print("Hellow let's explore some us bikeshare data")
@@ -213,7 +213,7 @@ def main():
                         restart = input('\nWould you like to get statistics on user? Enter yes or no.\n')
                         if restart.lower() == 'yes':
                             user_stats(df,city)
-                       
+
                 else:
                     restart = input('\nWould you like to get statistics on trip durations? Enter yes or no.\n')
                     if restart.lower() == 'yes':
@@ -222,7 +222,7 @@ def main():
                         restart = input('\nWould you like to get statistics on user? Enter yes or no.\n')
                         if restart.lower() == 'yes':
                             user_stats(df,city)
-                            
+
             else:
                 restart = input('\nWould you like to get statistics on the most frequent stations and continue ? Enter yes or no.\n')
                 if restart.lower() == 'yes':
@@ -233,12 +233,12 @@ def main():
                        restart = input('\nWould you like to get statistics on user? Enter yes or no.\n')
                        if restart.lower() == 'yes':
                         user_stats(df,city)
-                       
+
                     else:
                         restart = input('\nWould you like to get statistics on user? Enter yes or no.\n')
                         if restart.lower() == 'yes':
                             user_stats(df,city)
-                            
+
                 else:
                     restart = input('\nWould you like to get statistics on trip durations? Enter yes or no.\n')
                     if restart.lower() == 'yes':
@@ -246,14 +246,14 @@ def main():
                         restart = input('\nWould you like to get statistics on user? Enter yes or no.\n')
                         if restart.lower() == 'yes':
                             user_stats(df,city)
-                        
-                            
-                      
-                    
+
+
+
+
                     else:
                         restart = input('\nWould you like to get statistics on user? Enter yes or no.\n')
                         if restart.lower() == 'yes':
-                            user_stats(df,city)           
+                            user_stats(df,city)
         viw_data(city)
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
