@@ -4,12 +4,14 @@
 04/06/2021.
 
 ### Project Title
-US Bikeshare Project
+Bikeshare Project
 
 ### Description
 The bikeshare.py file is set up as a script that takes in raw input to create an interactive experience in the terminal that answers some interesting questions about the us bikeshare project based on the dataset given.
 ### Files used
+PROGRAME FILES-<br />
 bikeshare.py<br />
+DATA FILES-<br />
 chicago.csv<br />
 new_york_city.csv<br />
 washington.csv<br />
